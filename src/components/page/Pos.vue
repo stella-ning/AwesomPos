@@ -23,10 +23,18 @@
                         </div>
                     </el-tab-pane>
                     <el-tab-pane  label="挂单">
-
-                    </el-tab-pane>
-                    <el-tab-pane  label="外卖">
-
+                        <el-table :data="scratch">
+                            <el-table-column prop="oriderCode" label="订单号"></el-table-column>
+                            <el-table-column prop="count" label="商品数量"></el-table-column>
+                            <el-table-column prop="orderPrice" label="金额"></el-table-column>
+                            <el-table-column prop="orderTime" label="下单时间"></el-table-column>
+                            <el-table-column label="操作" fixed="right">
+                                <template scope="scope">
+                                    <el-button type="text" size="small">删除</el-button>
+                                    <el-button type="success" @click="checkout">结账</el-button>
+                                </template>
+                            </el-table-column>
+                        </el-table>
                     </el-tab-pane>
                 </el-tabs>
             </el-col>
@@ -138,7 +146,8 @@
                 type0Goods:[],
                 type1Goods:[],
                 type2Goods:[],
-                type3Goods:[]
+                type3Goods:[],
+                scratch:[]
             }
         },
         created:function(){
@@ -219,7 +228,12 @@
                 }else{
                     this.$message.error('不能空结。老板了解你急切的心情！')
                 }
+            },
+            //挂单
+            addScratch(){
+
             }
+
         }
     }
 
